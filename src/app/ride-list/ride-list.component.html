@@ -1,6 +1,6 @@
 <div class="container">
      <header class="header">Pick a ride</header>
-     <div class="ride-details">
+     <div class="ride-details" *ngIf="restoreRideDataFromStorage.length > 0;else noRide">
         <div class="search-box">
             <input type="text" placeholder="search vehicle type" class="input-field" [(ngModel)]="userInput">
         </div>
@@ -30,6 +30,11 @@
         
         
      </div>
+
+     <ng-template #noRide >
+        <p class="error" style="text-align: center;padding: 0 20px;">No Ride is available at the moment</p>
+
+     </ng-template>
    
 
 </div>

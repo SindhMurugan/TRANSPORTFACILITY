@@ -19,7 +19,7 @@ export class AddNewRideComponent {
       employee_id:['',Validators.required],
       vehicle_type:[''],
       vehicle_No:['',Validators.required],
-      vacant_Seat:['',Validators.required],
+      vacant_Seat:['',[Validators.required,Validators.minLength]],
       time:['',Validators.required],
       pickup_Point:['',Validators.required],
       destination:['',Validators.required],
@@ -36,6 +36,7 @@ export class AddNewRideComponent {
 
 
   addedNewRide(){
+    console.log('this.addNewRideForm' , this.addNewRideForm)
     const active_employeeId = this.addNewRideForm.get('employee_id')?.value
     const checkEmployeeId = this.service.getValueFromLocalStorage.some((ride:RideDataModel) => ride.employee_id == active_employeeId )
     if(checkEmployeeId){

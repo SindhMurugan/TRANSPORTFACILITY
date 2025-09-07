@@ -16,6 +16,12 @@
 
 .input-field{
     padding: 5px 0px 5px 7px;
+     border: 1px solid #dddddd; 
+    /* margin:3px 0px; */
    
+}
+
+.error{
+    color:red
 }
 

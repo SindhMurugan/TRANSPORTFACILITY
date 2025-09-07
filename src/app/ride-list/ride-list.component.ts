@@ -12,7 +12,7 @@ export class RideListComponent implements OnChanges,OnInit {
 
   @Input() newRideData:Record<string,string> ={}
   restoreRideDataFromStorage:RideDataModel[] = new Array()
-  current_time = new Date().getTime()
+  current_time = new Date()
   userInput:string=''
   activeUser:number = 0
 
@@ -27,7 +27,7 @@ export class RideListComponent implements OnChanges,OnInit {
       this.service.setValueToLocalStorage(existingData)
     }
     this.restoreRideDataFromStorage= this.service.getValueFromLocalStorage
-    console.log(this.current_time , 'ccurrent_time')
+   
     
     
   }
@@ -40,30 +40,30 @@ export class RideListComponent implements OnChanges,OnInit {
     return item.id
 
   }
-  
+
+
 
 
   rideBooked(rideDetails:RideDataModel):void{
+   
+
     if(rideDetails.employee_id == this.activeUser){
       alert("Sorry , you can't book the ride twise")
+      return;
     }
 
     if(rideDetails['vacant_Seat'] > 0){
       let bookedRide:RideDataModel = {...rideDetails , vacant_Seat:rideDetails['vacant_Seat']-1  }
-      console.log(bookedRide,'bookedRide')
+     
 
       this.restoreRideDataFromStorage.forEach((ride)=> {
         if(ride.employee_id == rideDetails.employee_id){
           let index = this.restoreRideDataFromStorage.indexOf(ride)
-          console.log(999 , index)
-          this.restoreRideDataFromStorage.splice(index , 1)
-          console.log("8888" , this.restoreRideDataFromStorage)
+           this.restoreRideDataFromStorage[index] = bookedRide
+           
         }
       })
 
-      this.restoreRideDataFromStorage.push(bookedRide)
-     
-      
       this.service.setValueToLocalStorage(this.restoreRideDataFromStorage)
       this.restoreRideDataFromStorage= this.service.getValueFromLocalStorage
     }
