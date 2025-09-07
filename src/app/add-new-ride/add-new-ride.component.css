@@ -1,91 +1,61 @@
+.form {
+  padding: 20px;
+  overflow: auto;
 
-.form{
-    padding: 20px;
-    overflow: auto;
-   
-    /* border-radius: 5px ; */
-
+  /* border-radius: 5px ; */
 }
 
-.container{
-    height: fit-content;
-    max-height: 100%;
-    overflow: auto;
+.container {
+  height: fit-content;
+  max-height: 100%;
+  overflow: auto;
 }
 
-
-.form-field{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.form-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 12px 0 0 0;
 }
 
-.form-field section{
-    padding: 10px;
+.form-field section {
+  padding: 10px;
 }
 
-.error{
-    color:red
+.button {
+  left: 40%;
+  background-color: rgba(0, 0, 255, 0.512);
+  color: white;
 }
 
-
-
-.button{
-    
-    left:40%;
-    background-color: rgba(0, 0, 255, 0.512);
-    color:white
-    
+.screen-section {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 20px;
+  padding: 20px;
 }
-
-
-
-.screen-section{
-    display: grid;
-    grid-template-columns: 500px 1fr;
-    gap:20px;
-    padding: 20px;
-   
-}
-
-
-
-
 
 @media only screen and (max-width: 600px) {
-    .screen-section{
+  .screen-section {
     grid-template-columns: 350px;
-   
-}
+  }
 
-.form-field{
+  .form-field {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
 }
-
-
-
-}
-
 
 @media only screen and (min-width: 600px) {
-        .screen-section{
+  .screen-section {
     grid-template-columns: 1fr;
-}
-
-
+  }
 }
 
 @media only screen and (min-width: 992px) {
-      .screen-section{
+  .screen-section {
     grid-template-columns: 500px 1fr;
+  }
 }
-
-}
-
-
-
-
-

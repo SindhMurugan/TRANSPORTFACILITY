@@ -1,95 +1,103 @@
 <div class="screen-section">
-<div class="container">
-    <header class="header">Add New Ride</header>
-    <form action="" [formGroup]="addNewRideForm" class="form" autocomplete="on">
-        <div class="form-field">
-            <label>Employee ID</label>
-            <section>
-                <input type="text" placeholder="Enter Employee ID" formControlName="employee_id" class="input-field">
-            <div *ngIf="getFormControls['employee_id'].touched && getFormControls['employee_id'].invalid">
-                <small class="error">Please Enter Employee ID</small>
-            </div>
-            </section>
-            
-        </div>
-        <div  class="form-field">
-            <label>Vehicle Type</label>
-            <section>
-                
-                <select name="vehicle" id="vehicle" formControlName="vehicle_type" style="width: 170px;" class="input-field">
-                     <option value="" disabled selected >Select a ride</option>
-                    <option value="bike">Bike</option>
-                    <option value="car">Car</option>
-                </select>
-          
-                 
-            </section>
-           
-        </div>
-        <div  class="form-field">
-            <label>Vehicle No</label>
-            <section>
-                 <input type="text" placeholder="Enter Vehicle No" formControlName="vehicle_No" class="input-field">
-                 <div *ngIf="getFormControls['vehicle_No'].touched && getFormControls['vehicle_No'].invalid">
-                <small class="error">Please Vehicle No</small>
-            </div>
-            </section>
-           
-             
-        </div>
-        <div  class="form-field">
-            <label>Vacant Seats</label>
-           
-            <section>
-                 <input type="number" placeholder="Enter Vacant Seats" formControlName="vacant_Seat" class="input-field">
-                 <div *ngIf="getFormControls['vacant_Seat'].touched && getFormControls['vacant_Seat'].invalid">
-                <small class="error">Please Vacant Seats</small>
-            </div>
-            </section>
-            
-        </div>
-        <div  class="form-field">
-            <label>Time</label>
-            
-            <section>
-                <input type="time" placeholder="Enter Time" formControlName="time" class="input-field" style="width: 165px;">
-                 <div *ngIf="getFormControls['time'].touched && getFormControls['time'].invalid">
-                <small class="error">Please choose Time</small>
-            </div>
-            </section>
-            
-        </div>
-        <div class="form-field">
-            <label>Pick-up Point</label>
-            
-            <section>
-                <input type="text" placeholder="Enter Pick-up Point" formControlName="pickup_Point" class="input-field">
-                <div *ngIf="getFormControls['pickup_Point'].touched && getFormControls['pickup_Point'].invalid">
-                <small class="error">Please Pick-up Point</small>
-            </div>
-            </section>
-             
-        </div>
-        <div class="form-field">
-            <label>Destination</label>
-            
-            <section>
-                <input type="text" placeholder="Enter Destinatione" formControlName="destination" class="input-field">
-                 <div *ngIf="getFormControls['destination'].touched && getFormControls['destination'].invalid">
-                <small class="error">Please Enter Destinatione</small>
-            </div>
-            </section>
-            
-        </div>
-        <div class="submit-btn">
-            <button mat-button type="submit" [disabled]="addNewRideForm.invalid" (click)="addedNewRide()" class="button">Add Ride</button>
-        </div>
-    </form>
-</div>
-<div >
-    <app-ride-list [newRideData]="newRide"></app-ride-list>
-</div>
+    <div class="container">
+        <header class="header">Add New Ride</header>
+        <form action="" [formGroup]="addNewRideForm" class="form" autocomplete="on">
+            <div class="form-field">
+                <label>Employee ID</label>
+                <section>
+                    <input type="text" placeholder="Enter Employee ID" formControlName="employee_id"
+                        class="input-field">
+                    <div *ngIf="getFormControls['employee_id'].touched && getFormControls['employee_id'].invalid">
+                        <small class="error">Please Enter Employee ID</small>
+                    </div>
+                </section>
 
-</div>
+            </div>
+            <div class="form-field">
+                <label>Vehicle Type</label>
+                <section>
+
+                    <select name="vehicle" id="vehicle" formControlName="vehicle_type" style="width: 170px;"
+                        class="input-field">
+                        <option value="" disabled selected>Select a ride</option>
+                        <option value="bike">Bike</option>
+                        <option value="car">Car</option>
+                    </select>
 
 
+                </section>
+
+            </div>
+            <div class="form-field">
+                <label>Vehicle No</label>
+                <section>
+                    <input type="text" placeholder="Enter Vehicle No" formControlName="vehicle_No" class="input-field">
+                    <div
+                        *ngIf="getFormControls['vehicle_No'].touched && getFormControls['vehicle_No'].errors?.['required']">
+                        <small class="error">Please Enter Vehicle No</small>
+                    </div>
+                    <div *ngIf="getFormControls['vehicle_No'].errors?.['minlength']">
+                        <small class="error" style="text-wrap:20px;">Vehicle No at least 4 digit</small>
+                    </div>
+                </section>
+
+
+            </div>
+            <div class="form-field">
+                <label>Vacant Seats</label>
+
+                <section>
+                    <input type="number" placeholder="Enter Vacant Seats" formControlName="vacant_Seat"
+                        class="input-field">
+                    <div *ngIf="getFormControls['vacant_Seat'].touched && getFormControls['vacant_Seat'].invalid">
+                        <small class="error">Please Enter Vacant Seats</small>
+                    </div>
+                </section>
+
+            </div>
+            <div class="form-field">
+                <label>Time</label>
+
+                <section>
+                    <input type="time" placeholder="Enter Time" formControlName="time" class="input-field"
+                        style="width: 165px;">
+                    <div *ngIf="getFormControls['time'].touched && getFormControls['time'].invalid">
+                        <small class="error">Please choose Time</small>
+                    </div>
+                </section>
+
+            </div>
+            <div class="form-field">
+                <label>Pick-up Point</label>
+
+                <section>
+                    <input type="text" placeholder="Enter Pick-up Point" formControlName="pickup_Point"
+                        class="input-field">
+                    <div *ngIf="getFormControls['pickup_Point'].touched && getFormControls['pickup_Point'].invalid">
+                        <small class="error">Please Enter Pick-up Point</small>
+                    </div>
+                </section>
+
+            </div>
+            <div class="form-field">
+                <label>Destination</label>
+
+                <section>
+                    <input type="text" placeholder="Enter Destinatione" formControlName="destination"
+                        class="input-field">
+                    <div *ngIf="getFormControls['destination'].touched && getFormControls['destination'].invalid">
+                        <small class="error">Please Enter Destinatione</small>
+                    </div>
+                </section>
+
+            </div>
+            <div class="submit-btn">
+                <button mat-button type="submit" (click)="addedNewRide()" class="button">Add Ride</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <app-ride-list [newRideData]="newRide"></app-ride-list>
+    </div>
+
+</div>

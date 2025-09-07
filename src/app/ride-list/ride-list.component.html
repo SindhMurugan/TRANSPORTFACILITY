@@ -1,40 +1,41 @@
 <div class="container">
-     <header class="header">Pick a ride</header>
-     <div class="ride-details" *ngIf="restoreRideDataFromStorage.length > 0;else noRide">
+    <header class="header">Pick a ride</header>
+    <div class="ride-details" *ngIf="restoreRideDataFromStorage.length > 0;else noRide">
         <div class="search-box">
             <input type="text" placeholder="search vehicle type" class="input-field" [(ngModel)]="userInput">
         </div>
         <div class="table-responsive">
-             <table class="table">
-        <tr>
-            <th>Vehicle Type</th>
-             <th>Vacant Seats</th>
-             <th>Pick-up Point</th>
-             <th>Destination</th>
-             <th>Time</th>
-              <th>Book</th>
-             
-        </tr>
-        <tr *ngFor="let ride of restoreRideDataFromStorage | filter:userInput ;trackBy :trackById">
-                <td>{{ride.vehicle_type | titlecase}}</td>
-                <td>{{ride.vacant_Seat}}</td>
-                <td>{{ride.pickup_Point | titlecase}}</td>
-                <td>{{ride.destination | titlecase}}</td>
-                <td>{{ride.time}}</td>
-                <td style="text-align: center;"><button mat-button type="submit" 
-                    (click)="rideBooked(ride)" [disabled]="ride.vacant_Seat ==0" [ngClass]="ride.vacant_Seat ==0 ? 'button-disabled':'button'">Book</button></td>
-        </tr>
-    </table>
+            <table class="table">
+                <tr>
+                    <th>Vehicle Type</th>
+                    <th>Vacant Seats</th>
+                    <th>Pick-up Point</th>
+                    <th>Destination</th>
+                    <th>Time</th>
+                    <th>Book</th>
+
+                </tr>
+                <tr *ngFor="let ride of restoreRideDataFromStorage | filter:userInput ;trackBy :trackById">
+                    <td>{{ride.vehicle_type | titlecase}}</td>
+                    <td>{{ride.vacant_Seat}}</td>
+                    <td>{{ride.pickup_Point | titlecase}}</td>
+                    <td>{{ride.destination | titlecase}}</td>
+                    <td>{{ride.time}}</td>
+                    <td style="text-align: center;"><button mat-button type="submit" (click)="rideBooked(ride)"
+                            [disabled]="ride.vacant_Seat ==0"
+                            [ngClass]="ride.vacant_Seat ==0 ? 'button-disabled':'button'">Book</button></td>
+                </tr>
+            </table>
 
         </div>
-        
-        
-     </div>
 
-     <ng-template #noRide >
-        <p class="error" style="text-align: center;padding: 0 20px;">No Ride is available at the moment</p>
 
-     </ng-template>
-   
+    </div>
+
+    <ng-template #noRide>
+        <p style="text-align: center;padding: 0 20px;color:red">No Ride is available at the moment</p>
+
+    </ng-template>
+
 
 </div>
