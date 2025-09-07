@@ -92,7 +92,7 @@
 
             </div>
             <div class="submit-btn">
-                <button mat-button type="submit" (click)="addedNewRide()" class="button">Add Ride</button>
+                <button mat-button type="submit" (click)="addedNewRide()" class="button" [disabled]="addNewRideForm.invalid">Add Ride</button>
             </div>
         </form>
     </div>
